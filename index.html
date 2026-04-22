@@ -1219,11 +1219,23 @@
       border: 1px solid rgba(255,255,255,0.08);
       backdrop-filter: blur(18px);
       box-shadow: 0 22px 48px rgba(6,10,22,0.34);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(16px);
+      transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
     }
 
     .mobile-download .btn {
       width: 100%;
       min-height: 52px;
+    }
+
+    .mobile-download.is-shown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     .download-note {
@@ -1856,6 +1868,25 @@
       element.style.transitionDelay = `${Math.min(index * 45, 220)}ms`;
       observer.observe(element);
     });
+
+    const mobileDownload = document.querySelector('.mobile-download');
+    const mockupTarget = document.querySelector('.hero-visual') || document.querySelector('.phone-wrap');
+
+    if (mobileDownload && mockupTarget) {
+      const downloadObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            mobileDownload.classList.remove('is-shown');
+          } else {
+            mobileDownload.classList.add('is-shown');
+          }
+        });
+      }, {
+        threshold: 0.2
+      });
+
+      downloadObserver.observe(mockupTarget);
+    }
 
     const year = document.querySelector('[data-year]');
     if (year) {
