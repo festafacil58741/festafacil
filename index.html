@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jadlog | Download</title>
+  <title>CDG Continental | Download</title>
   <style>
+    :root {
+      --primary: #0b5cff;
+      --primary-dark: #063cb3;
+      --accent: #00c2a8;
+      --ink: #10213f;
+      --muted: #65728a;
+      --soft: #f4f8ff;
+      --card: #ffffff;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,282 +23,344 @@
 
     body {
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #f7f9f7 0%, #ffffff 55%, #eef4ef 100%);
-      color: #26352b;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(0, 194, 168, 0.20), transparent 28%),
+        radial-gradient(circle at 82% 12%, rgba(11, 92, 255, 0.18), transparent 32%),
+        linear-gradient(135deg, #ffffff 0%, var(--soft) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 22px;
     }
 
-    .page {
+    .landing {
       width: 100%;
-      max-width: 980px;
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(38, 53, 43, 0.08);
-      border-radius: 28px;
-      box-shadow: 0 24px 70px rgba(38, 53, 43, 0.12);
+      max-width: 1040px;
+      min-height: 600px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(16, 33, 63, 0.08);
+      border-radius: 34px;
+      box-shadow: 0 28px 80px rgba(16, 33, 63, 0.14);
       overflow: hidden;
-    }
-
-    .hero {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
+      grid-template-columns: 1fr 0.95fr;
+    }
+
+    .content {
+      padding: 58px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .brand {
+      display: inline-flex;
       align-items: center;
-      padding: 48px;
+      gap: 14px;
+      margin-bottom: 54px;
+      font-weight: 900;
+      font-size: 21px;
+      letter-spacing: -0.03em;
+      color: var(--ink);
     }
 
-    .logo {
-      max-width: 430px;
-      width: 100%;
-      height: auto;
-      margin-bottom: 34px;
-      display: block;
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(11, 92, 255, 0.22);
     }
 
-    .eyebrow {
-      color: #ef1745;
-      font-size: 14px;
+    .tag {
+      width: fit-content;
+      color: var(--primary-dark);
+      background: rgba(11, 92, 255, 0.09);
+      border: 1px solid rgba(11, 92, 255, 0.14);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(34px, 5vw, 56px);
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-      margin-bottom: 18px;
-      color: #26352b;
+      max-width: 560px;
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 20px;
     }
 
     p {
+      max-width: 470px;
+      color: var(--muted);
       font-size: 18px;
-      line-height: 1.6;
-      color: #4d5a51;
-      max-width: 560px;
-      margin-bottom: 30px;
+      line-height: 1.55;
+      margin-bottom: 34px;
     }
 
-    .download-button {
+    .download {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      min-height: 58px;
-      padding: 0 30px;
+      width: fit-content;
+      min-height: 62px;
+      padding: 0 34px;
       border-radius: 999px;
-      background: #ef1745;
+      background: var(--primary);
       color: #ffffff;
-      font-size: 18px;
-      font-weight: 800;
       text-decoration: none;
-      box-shadow: 0 14px 30px rgba(239, 23, 69, 0.32);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 0 18px 36px rgba(11, 92, 255, 0.30);
+      transition: 0.2s ease;
     }
 
-    .download-button:hover {
+    .download:hover {
       transform: translateY(-2px);
-      background: #d9113b;
-      box-shadow: 0 18px 38px rgba(239, 23, 69, 0.38);
+      background: var(--primary-dark);
+      box-shadow: 0 22px 44px rgba(11, 92, 255, 0.36);
     }
 
-    .download-button:active {
-      transform: translateY(0);
+    .download-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
     }
 
-    .download-button span {
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    .note {
+    .hint {
       margin-top: 16px;
       font-size: 13px;
-      color: #728077;
+      color: #7b879b;
     }
 
     .visual {
-      background: #26352b;
-      border-radius: 24px;
-      min-height: 430px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       position: relative;
+      background: linear-gradient(160deg, var(--ink), #07152d 58%, #061123);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
-    }
-
-    .visual::before,
-    .visual::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      background: rgba(239, 23, 69, 0.24);
-      filter: blur(2px);
     }
 
     .visual::before {
-      width: 220px;
-      height: 220px;
-      top: -70px;
-      right: -60px;
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: rgba(0, 194, 168, 0.24);
+      top: -120px;
+      right: -110px;
+      filter: blur(4px);
     }
 
     .visual::after {
-      width: 150px;
-      height: 150px;
-      bottom: -50px;
-      left: -40px;
-    }
-
-    .phone {
-      position: relative;
-      z-index: 1;
-      width: 220px;
-      height: 360px;
-      margin: auto;
-      background: #f8faf8;
-      border-radius: 32px;
-      box-shadow: inset 0 0 0 8px #131d16, 0 22px 50px rgba(0, 0, 0, 0.32);
-      padding: 42px 22px 24px;
-    }
-
-    .phone::before {
       content: "";
       position: absolute;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70px;
-      height: 7px;
-      border-radius: 99px;
-      background: #26352b;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(11, 92, 255, 0.32);
+      bottom: -100px;
+      left: -80px;
+      filter: blur(5px);
     }
 
-    .app-card {
-      background: #ffffff;
-      border-radius: 22px;
-      padding: 22px 18px;
-      text-align: center;
-      box-shadow: 0 12px 26px rgba(38, 53, 43, 0.12);
+    .tracking-card {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 350px);
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.30);
     }
 
-    .app-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 18px;
-      border-radius: 18px;
-      background: #ef1745;
-      display: grid;
-      place-items: center;
-      color: #ffffff;
-      font-size: 34px;
+    .status-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .status-top strong {
+      font-size: 17px;
+    }
+
+    .pill {
+      background: rgba(0, 194, 168, 0.12);
+      color: #008d7c;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
       font-weight: 900;
     }
 
-    .app-card strong {
+    .route {
+      display: grid;
+      gap: 18px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 7px rgba(0, 194, 168, 0.13);
+    }
+
+    .step:nth-child(2) .dot,
+    .step:nth-child(3) .dot {
+      background: var(--primary);
+      box-shadow: 0 0 0 7px rgba(11, 92, 255, 0.12);
+    }
+
+    .step b {
       display: block;
-      color: #26352b;
-      font-size: 18px;
-      margin-bottom: 8px;
+      font-size: 15px;
+      margin-bottom: 4px;
     }
 
-    .app-card small {
-      color: #68766d;
-      line-height: 1.4;
+    .step span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
     }
 
-    .progress {
-      width: 100%;
-      height: 10px;
-      background: #e8eee9;
+    .map-line {
+      height: 12px;
+      background: #eaf0fb;
       border-radius: 999px;
-      margin-top: 24px;
+      margin-top: 28px;
       overflow: hidden;
     }
 
-    .progress div {
-      width: 76%;
+    .map-line div {
+      width: 72%;
       height: 100%;
-      background: #ef1745;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
       border-radius: 999px;
     }
 
-    @media (max-width: 820px) {
-      .hero {
+    @media (max-width: 860px) {
+      .landing {
         grid-template-columns: 1fr;
-        padding: 32px 24px;
+      }
+
+      .content {
+        padding: 42px 28px;
+      }
+
+      .brand {
+        margin-bottom: 38px;
       }
 
       .visual {
-        min-height: 320px;
-      }
-
-      .phone {
-        transform: scale(0.88);
+        min-height: 370px;
+        padding: 34px 24px;
       }
     }
 
     @media (max-width: 520px) {
       body {
-        padding: 14px;
+        padding: 12px;
       }
 
-      .page {
-        border-radius: 20px;
+      .landing {
+        border-radius: 24px;
       }
 
-      .hero {
-        padding: 28px 20px;
-      }
-
-      .logo {
-        margin-bottom: 28px;
+      .content {
+        padding: 34px 22px;
       }
 
       p {
         font-size: 16px;
       }
 
-      .download-button {
+      .download {
         width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero">
-      <div class="content">
-        <img class="logo" src="logo_home.png" alt="Jadlog - Sua encomenda no melhor caminho" />
-
-        <div class="eyebrow">Aplicativo oficial</div>
-        <h1>Baixe agora e acompanhe sua entrega.</h1>
-        <p>
-          Tenha acesso rápido ao app para consultar informações, acompanhar encomendas e facilitar sua experiência de entrega pelo celular.
-        </p>
-
-        <a class="download-button" href="https://festafacil58741.github.io/festafacil/jadlog.apk" download>
-          <span>↓</span>
-          Baixar aplicativo
-        </a>
-        <div class="note">Arquivo APK para Android. O download começa ao tocar no botão.</div>
+  <main class="landing">
+    <section class="content">
+      <div class="brand">
+        <div class="brand-mark">CDG</div>
+        CDG Continental
       </div>
 
-      <div class="visual" aria-hidden="true">
-        <div class="phone">
-          <div class="app-card">
-            <div class="app-icon">J</div>
-            <strong>App Jadlog</strong>
-            <small>Download seguro e rápido para o seu Android.</small>
-            <div class="progress"><div></div></div>
+      <div class="tag">Rastreio de entregas</div>
+      <h1>Acompanhe sua encomenda no celular.</h1>
+      <p>Baixe o app CDG Continental para consultar o status da sua entrega de forma rápida.</p>
+
+      <a class="download" href="https://festafacil58741.github.io/festafacil/FestaFacil.apk" download>
+        <span class="download-icon">↓</span>
+        Baixar aplicativo
+      </a>
+      <div class="hint">APK para Android • Toque para iniciar o download</div>
+    </section>
+
+    <section class="visual" aria-hidden="true">
+      <div class="tracking-card">
+        <div class="status-top">
+          <strong>Pedido em rota</strong>
+          <span class="pill">Atualizado</span>
+        </div>
+
+        <div class="route">
+          <div class="step">
+            <div class="dot"></div>
+            <div>
+              <b>Coleta realizada</b>
+              <span>Pacote recebido pela transportadora</span>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot"></div>
+            <div>
+              <b>Em transferência</b>
+              <span>Seguindo para o centro de distribuição</span>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot"></div>
+            <div>
+              <b>Saiu para entrega</b>
+              <span>Acompanhe tudo pelo aplicativo</span>
+            </div>
           </div>
         </div>
+
+        <div class="map-line"><div></div></div>
       </div>
     </section>
   </main>
